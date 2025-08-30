@@ -1,0 +1,5 @@
+ffmpeg -f lavfi -i color=c=black:s=1280x720:d=360000 \
+-vf "drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf: \
+text='%{eif\: (360000-t)/3600 \:d\:2}:%{eif\: ((360000-t)%3600)/60 \:d\:2}:%{eif\: (360000-t)%60 \:d\:2}': \
+fontcolor=white: fontsize=70: x=(w-text_w)/2: y=(h-text_h)/2" \
+-c:v libx264 -t 360000 -r 1 -pix_fmt yuv420p countdown_100h_720p.mp4
